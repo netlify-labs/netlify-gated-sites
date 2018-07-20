@@ -10,8 +10,8 @@
     "netlify-lambda": "^0.4.0"
   },
   "scripts": {
-    "prebuild": "mkdir build",
+    "prebuild": "rm -rf build && mkdir build",
     "build": "netlify-lambda build functions",
-    "postbuild": "cp ./src/* build"
+    "postbuild": "cp -R ./src/* build"
   }
 }
