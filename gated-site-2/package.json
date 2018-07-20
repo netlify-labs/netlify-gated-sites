@@ -1,0 +1,17 @@
+{
+  "name": "site2",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "cookie": "^0.3.1",
+    "jsonwebtoken": "^8.3.0"
+  },
+  "devDependencies": {
+    "netlify-lambda": "^0.4.0"
+  },
+  "scripts": {
+    "prebuild": "mkdir build",
+    "build": "netlify-lambda build functions",
+    "postbuild": "cp ./src/* build"
+  }
+}

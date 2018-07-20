@@ -1,0 +1,6 @@
+# Cookies page for cookie debugging
+/cookies/* /cookies/index.html
+# If visitor has 'nf_jwt' with role set, let them see site.
+/* /:splat 200! Role=*
+# Else, redirect them to login portal site.
+/* https://gated-sites-demo-login-site.netlify.com/?site=https://gated-sites-demo-site1.netlify.com/:splat 302!
