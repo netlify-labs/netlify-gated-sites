@@ -1,0 +1,4 @@
+# If visitor has 'nf_jwt' with role set. Log them into the referring site
+/* site=:site /.netlify/functions/do-login?site=:site 302! Role=*
+# else fall back and show them login portal
+/* 	/index.html	 200

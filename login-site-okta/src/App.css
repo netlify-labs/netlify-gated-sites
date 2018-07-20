@@ -1,0 +1,46 @@
+.app {
+  text-align: center;
+}
+
+.okta-logo {
+  width: 200px;
+}
+
+.app-header {
+  background-color: #bdbbbb;
+  height: 150px;
+  padding: 20px;
+  color: white;
+  padding-bottom: 30px;
+}
+
+.site-wrapper:first-of-type {
+  border-top: 1px solid #b9b9b9;
+}
+.site-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #b9b9b9;
+}
+
+.site-contents {
+  padding: 30px;
+  display: flex;
+  align-items: center;
+}
+.site-url a {
+  text-decoration: none;
+}
+.site-url h2 {
+  margin-top: 25px;
+  font-size: 22px;
+}
+.site-cookies {
+  margin-right: 20px;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
