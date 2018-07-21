@@ -1,11 +1,10 @@
 [build]
-  base = "okta/login-site-okta"
   # This will be run the site build
   command = "npm run build"
   # This is the directory is publishing to netlify's CDN
-  publish = "okta/login-site-okta/build"
+  publish = "build"
   # Location of built function code
-  functions = "okta/login-site-okta/functions-build"
+  functions = "functions-build"
 
 [[headers]]
   for = "/*"
