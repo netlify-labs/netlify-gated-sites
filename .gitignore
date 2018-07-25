@@ -9,6 +9,7 @@
 # production
 /build
 /functions-build
+/cache
 
 # misc
 .DS_Store

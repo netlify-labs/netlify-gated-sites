@@ -1,0 +1,11 @@
+{
+  "name": "gated-netlify-sites",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "cache": "node ./cache.js"
+  },
+  "devDependencies": {
+    "cache-me-outside": "0.0.1"
+  }
+}
