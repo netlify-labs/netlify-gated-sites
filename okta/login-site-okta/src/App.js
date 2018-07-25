@@ -183,7 +183,7 @@ export default class App extends Component {
       <div className="app">
         <header className="app-header">
           <h1>
-            Login via <img alt='okta logo' className='okta-logo' src={oktaLogo} />
+            Login w/ <img alt='okta logo' className='okta-logo' src={oktaLogo} />
           </h1>
         </header>
 
