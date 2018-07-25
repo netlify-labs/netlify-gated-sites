@@ -42,7 +42,7 @@ const options = {
 }
 
 cacheMagic(options).then(() => {
-  console.log('Success! You are ready to rock')
+  console.log('Success! You are ready to rock. Caches saved')
   getSize(cacheFolder, (err, size) => {
     if (err) {
       throw err
