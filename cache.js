@@ -25,18 +25,18 @@ const options = {
       invalidateOn: path.join(__dirname, 'package.json'),
       command: 'npm install'
     },
-    {
-      path: path.join(__dirname, 'okta/gated-site-1/node_modules'),
-      // TODO finish Cache Invalidator
-      invalidateOn: path.join(__dirname, 'okta/gated-site-1/package.json'),
-      command: 'npm install'
-    },
-    {
-      path: path.join(__dirname, 'okta/gated-site-2/node_modules'),
-      // TODO finish Cache Invalidator
-      invalidateOn: path.join(__dirname, 'okta/gated-site-2/package.json'),
-      command: 'npm install'
-    },
+    // {
+    //   path: path.join(__dirname, 'okta/gated-site-1/node_modules'),
+    //   // TODO finish Cache Invalidator
+    //   invalidateOn: path.join(__dirname, 'okta/gated-site-1/package.json'),
+    //   command: 'npm install'
+    // },
+    // {
+    //   path: path.join(__dirname, 'okta/gated-site-2/node_modules'),
+    //   // TODO finish Cache Invalidator
+    //   invalidateOn: path.join(__dirname, 'okta/gated-site-2/package.json'),
+    //   command: 'npm install'
+    // },
     {
       path: path.join(__dirname, 'okta/login-site-okta/node_modules'),
       // TODO finish Cache Invalidator
