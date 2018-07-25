@@ -20,6 +20,12 @@ const options = {
   // contents: path.join(__dirname, 'two'),
   contents: [
     {
+      path: path.join(__dirname, 'node_modules'),
+      // TODO finish Cache Invalidator
+      invalidateOn: path.join(__dirname, 'package.json'),
+      command: 'npm install'
+    },
+    {
       path: path.join(__dirname, 'okta/gated-site-1/node_modules'),
       // TODO finish Cache Invalidator
       invalidateOn: path.join(__dirname, 'okta/gated-site-1/package.json'),
@@ -60,11 +66,5 @@ cacheMagic(options).then(() => {
     console.log('Whats in my cache After?')
     console.log('------------------')
     child.execSync('ls ../cache', {stdio: [0, 1, 2]})
-
-    try {
-      child.execSync(`cd && ls ${cacheFolder}`, {stdio: [0, 1, 2]})
-    } catch (e) {
-      console.log('nada found')
-    }
   })
 })
