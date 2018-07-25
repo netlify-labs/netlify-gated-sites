@@ -5,8 +5,14 @@ const getSize = require('./getFolderSize')
 
 const cacheFolder = path.join(os.homedir(), '/cache')
 
+console.log('process.cwd()', process.cwd())
 child.execSync('ls', {stdio: [0, 1, 2]})
 
+console.log('parent list')
+child.execSync('ls ../', {stdio: [0, 1, 2]})
+
+console.log('parent parent list')
+child.execSync('ls ../../', {stdio: [0, 1, 2]})
 // getSize(cacheFolder, (err, size) => {
 //   if (err) {
 //     throw err
