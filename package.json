@@ -6,7 +6,6 @@
     "doInstall": "node ./cache.js"
   },
   "dependencies": {
-    "cache-me-outside": "0.0.3",
-    "get-folder-size": "^2.0.0"
+    "cache-me-outside": "0.0.3"
   }
 }
