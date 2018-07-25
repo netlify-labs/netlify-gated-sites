@@ -23,7 +23,7 @@ const options = {
       path: path.join(__dirname, 'node_modules'),
       // TODO finish Cache Invalidator
       invalidateOn: path.join(__dirname, 'package.json'),
-      command: 'npm install'
+      command: 'npm ci'
     },
     // {
     //   path: path.join(__dirname, 'okta/gated-site-1/node_modules'),
@@ -41,7 +41,7 @@ const options = {
       path: path.join(__dirname, 'okta/login-site-okta/node_modules'),
       // TODO finish Cache Invalidator
       invalidateOn: path.join(__dirname, 'okta/login-site-okta/package.json'),
-      command: 'npm install'
+      command: 'npm ci'
     }
   ],
   // cache folder destination
