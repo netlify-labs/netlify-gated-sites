@@ -5,7 +5,7 @@
   "scripts": {
     "cache": "node ./cache.js"
   },
-  "devDependencies": {
+  "dependencies": {
     "cache-me-outside": "0.0.1"
   }
 }
