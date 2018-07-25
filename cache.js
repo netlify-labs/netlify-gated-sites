@@ -1,8 +1,12 @@
 const path = require('path')
+const os = require('os')
 const cacheMagic = require('cache-me-outside')
 
-// const cacheDir = path.resolve('./opt/buildhome/cache')
-const cacheFolder = path.resolve('./cache')
+const cacheFolder = path.join(os.homedir(), '/opt/buildhome/cache')
+// const cacheFolder = path.resolve('./opt/buildhome/cache')
+console.log('HI cacheFolder', cacheFolder)
+return false
+// const cacheFolder = path.resolve('./cache')
 
 // Do it
 const options = {
