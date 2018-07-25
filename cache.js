@@ -1,11 +1,10 @@
 const path = require('path')
 const os = require('os')
 const cacheMagic = require('cache-me-outside')
+const getSize = require('get-folder-size')
 
-const cacheFolder = path.join(os.homedir(), '/opt/buildhome/cache')
+const cacheFolder = path.join(os.homedir(), '/cache')
 // const cacheFolder = path.resolve('./opt/buildhome/cache')
-console.log('HI cacheFolder', cacheFolder)
-return false
 // const cacheFolder = path.resolve('./cache')
 
 // Do it
@@ -44,4 +43,12 @@ const options = {
 
 cacheMagic(options).then(() => {
   console.log('Success! You are ready to rock')
+  getSize(cacheFolder, (err, size) => {
+    if (err) {
+      throw err
+    }
+    console.log('Cache size')
+    console.log(size + ' bytes')
+    console.log((size / 1024 / 1024).toFixed(2) + ' MB')
+  })
 })
