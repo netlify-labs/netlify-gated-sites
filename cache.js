@@ -62,7 +62,7 @@ cacheMagic(options).then(() => {
     child.execSync('ls ../cache', {stdio: [0, 1, 2]})
 
     try {
-      child.execSync('ls ../cache/octa', {stdio: [0, 1, 2]})
+      child.execSync(`cd && ls ${cacheFolder}`, {stdio: [0, 1, 2]})
     } catch (e) {
       console.log('nada found')
     }
