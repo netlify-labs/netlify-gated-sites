@@ -65,6 +65,6 @@ cacheMagic(options).then(() => {
     console.log((size / 1024 / 1024).toFixed(2) + ' MB')
     console.log('Whats in my cache After?')
     console.log('------------------')
-    child.execSync('ls ../cache', {stdio: [0, 1, 2]})
+    child.execSync('ls ../cache/okta', {stdio: [0, 1, 2]})
   })
 })
