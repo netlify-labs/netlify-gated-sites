@@ -1,11 +1,15 @@
 const path = require('path')
 const os = require('os')
+const child = require('child_process')
 const cacheMagic = require('cache-me-outside')
-const getSize = require('get-folder-size')
-
+const getSize = require('./getFolderSize')
 const cacheFolder = path.join(os.homedir(), '/cache')
 // const cacheFolder = path.resolve('./opt/buildhome/cache')
 // const cacheFolder = path.resolve('./cache')
+
+console.log('Whats in my cache before?')
+console.log('------------------')
+child.execSync('ls ../cache', {stdio: [0, 1, 2]})
 
 // Do it
 const options = {
@@ -50,5 +54,8 @@ cacheMagic(options).then(() => {
     console.log('Cache size')
     console.log(size + ' bytes')
     console.log((size / 1024 / 1024).toFixed(2) + ' MB')
+    console.log('Whats in my cache After?')
+    console.log('------------------')
+    child.execSync('ls ../cache', {stdio: [0, 1, 2]})
   })
 })
