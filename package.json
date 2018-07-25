@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "doInstall": "node ./cache.js"
+    "doInstall": "node ./test-cache.js"
   },
   "dependencies": {
     "cache-me-outside": "0.0.3",
