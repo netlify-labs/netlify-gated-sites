@@ -3,9 +3,12 @@ const os = require('os')
 const child = require('child_process')
 const cacheMagic = require('cache-me-outside')
 const getSize = require('./getFolderSize')
-const cacheFolder = path.join(os.homedir(), '/cache')
+const osDir = path.join(os.homedir(), '/cache')
+console.log('OS dir', osDir)
 // const cacheFolder = path.resolve('./opt/buildhome/cache')
 // const cacheFolder = path.resolve('./cache')
+const cacheFolder = path.join('/', 'opt', 'build', 'cache')
+console.log('cacheFolder', cacheFolder)
 
 console.log('Whats in my cache before?')
 console.log('------------------')
@@ -57,5 +60,11 @@ cacheMagic(options).then(() => {
     console.log('Whats in my cache After?')
     console.log('------------------')
     child.execSync('ls ../cache', {stdio: [0, 1, 2]})
+
+    try {
+      child.execSync('ls ../cache/octa', {stdio: [0, 1, 2]})
+    } catch (e) {
+      console.log('nada found')
+    }
   })
 })
