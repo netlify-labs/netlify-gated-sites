@@ -65,6 +65,6 @@ cacheMagic(options).then(() => {
     console.log((size / 1024 / 1024).toFixed(2) + ' MB')
     console.log('Whats in my cache After?')
     console.log('------------------')
-    child.execSync('find ../cache/fast-cache -type d -print -maxdepth 3', {stdio: [0, 1, 2]})
+    child.execSync('find ../cache/fast-cache -type d -print -maxdepth 6', {stdio: [0, 1, 2]})
   })
 })
