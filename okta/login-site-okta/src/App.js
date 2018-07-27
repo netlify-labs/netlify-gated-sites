@@ -47,6 +47,10 @@ export default class App extends Component {
         issuer: oktaBaseURL + '/oauth2/default',
         responseType: ['id_token'],
         display: 'page'
+      },
+      features: {
+        // Enable self-service registration flow
+        registration: true,
       }
     })
 
