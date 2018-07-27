@@ -56,7 +56,7 @@ export default class App extends Component {
       }
       // Session exists, show logged in state.
       if (res.status === 'ACTIVE') {
-        fetch('/.netlify/functions/verify-okta', {
+        fetch('/.netlify/functions/verify-okta-session', {
           method: 'POST',
           headers: {
             'Content-type': 'application/json'

@@ -44,6 +44,9 @@ exports.handler = (event, context, callback) => {
       const date = new Date(data.expiresAt)
       const expiresIn = (date.getTime() / 1000)
 
+      // Customize your user roles here
+      const userRoles = ['admin', 'editor']
+
       // Make new netlify token
       const netlifyTokenData = {
         exp: expiresIn,
@@ -51,12 +54,8 @@ exports.handler = (event, context, callback) => {
         email: data.login,
         'app_metadata': {
           'authorization': {
-            'roles': ['admin', 'editor']
-          },
-          'provider': 'email',
-          'roles': [
-            'admin'
-          ]
+            'roles': userRoles
+          }
         }
       }
 
