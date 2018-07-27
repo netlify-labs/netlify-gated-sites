@@ -29,3 +29,8 @@ We are using a combination of Netlify functions and Netlify `_redirects`.
 // Then create API token https://dev-652264-admin.oktapreview.com/admin/access/api/tokens
 
 // Then add netlify env vars
+
+
+## Troubleshooting
+
+If you see "Unable to connect to the server. Please check your network connection." message from the Okta widget. Make sure you have the correct okta client ID and base URL set. They should look like base url `https://dev-342521.oktapreview.com` and client ID `0oafn963hdsjY6P0h7`

@@ -3,17 +3,26 @@
 }
 
 .okta-logo {
-  width: 200px;
+  width: 160px;
+  margin-top: -15px;
+  margin-left: 10px;
 }
 
 .app-header {
   background-color: #bdbbbb;
-  height: 150px;
-  padding: 20px;
+  padding: 30px;
   color: white;
   padding-bottom: 30px;
 }
+.app-header h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+#okta-sign-in {
+  margin-top: 20px;
+}
 .site-wrapper:first-of-type {
   border-top: 1px solid #b9b9b9;
 }
@@ -31,10 +40,6 @@
 }
 .site-url a {
   text-decoration: none;
-}
-.site-url h2 {
-  margin-top: 25px;
-  font-size: 22px;
 }
 .site-cookies {
   margin-right: 20px;
