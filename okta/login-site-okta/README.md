@@ -148,7 +148,15 @@ We are using a combination of [Netlify functions](https://www.netlify.com/docs/f
 
     `OKTA_BASE_URL` - your Okta portal base URL. Example: `https://dev-641447.oktapreview.com`
 
-    `JWT_SECRET` - The secret used to sign the `nf_jwt` cookie being used for role based redirects
+    `JWT_SECRET` - The secret used to sign the `nf_jwt` cookie being used for role based redirects.
+
+4. Set your sites JWT secret
+
+    The `nf_jwt` cookie is validated based on the JWT secret set on your netlify site. You can find this under `Settings > Access Control > Visitor Access > Password/JWT Secret`
+
+    ![image](https://user-images.githubusercontent.com/532272/43340181-56e51552-9190-11e8-86aa-519ca1210179.png)
+
+    Use the same value set as the `JWT_SECRET` above.
 
 ## Troubleshooting
 
