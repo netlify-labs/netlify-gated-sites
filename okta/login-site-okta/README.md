@@ -23,6 +23,103 @@ These are the sites that are protected
 
 We are using a combination of [Netlify functions](https://www.netlify.com/docs/functions/), [Access Control](https://www.netlify.com/docs/visitor-access-control/#role-based-access-controls-with-jwt-tokens) and [role based `_redirects`](https://www.netlify.com/docs/redirects/#role-based-redirect-rules)
 
+```
+┌────────────────────────────────────┐                                                     
+│     User visits the gated site     │                                                     
+│                                    │                                                     
+│             gated.com              │◀───────────────────────────────────────────────────┐
+│                                    │                                                    │
+└────────────────────────────────────┘                                                    │
+                   │                                                                      │
+                   ▼                                                                      │
+┌──────────────────────────────────────────────────────┐                                           │
+│             Netlify role based redirects             │                                           │
+│        check for 'nf_jwt' cookie + user role         │                                           │
+│                                                      │                                           │
+│            via Netlify `_redirect` rule:             │                                           │
+│                                                      │                                           │
+│                /* /:splat 200! Role=*                │                                           │
+└──────────────────────────────────────────────────────┘                                           │
+                   │                                                                      │
+     Has valid jwt + correct role?                                                        │
+                   │                                                                      │
+                   │                                                                      │
+┌──────yes───────────┴──────────────No────────────┐                                         │
+│                                                 │                                         │
+│                                                 │                                         │
+│                                                 │                                         │
+▼                                                 ▼                                         │
+┌─────────────────────┐    ┌───────────────────────────────────────────────────────────────────┐       │
+│      Success!       │    │                                                                   │       │
+│                     │    │                                                                   │       │
+│   Show gated site   │    │                 Redirect to Login Portal Site via                 │       │
+│                     │    │                     Netlify `_redirect` rule:                     │       │
+└─────────────────────┘    │                                                                   │       │
+              │  /* https://login-portal.com/?site=https://gated.com/:splat 302!  │       │
+              │                                                                   │       │
+              │                                                                   │       │
+              └───────────────────────────────────────────────────────────────────┘       │
+                                                │                                         │
+                                                ▼                                         │
+                           ┌─────────────────────────────────────────┐                    │
+                           │                                         │                    │
+                           │       User logs into Portal Site        │                    │
+                           │                                         │                    │
+                           └─────────────────────────────────────────┘                    │
+                                                │                                         │
+                                                │                                         │
+                                                ▼                                         │
+                             ┌─────────────────────────────────────┐                      │
+                             │    Netlify function triggered to    │                      │
+                             │         verify Okta session         │                      │
+                             │                                     │                      │
+                             └─────────────────────────────────────┘                      │
+                                                │                                         │
+                                                │                                         │
+                                        is session valid?                                 │
+                                                │                                         │
+                                                │                                         │
+                   ┌───────────No───────────────┴─────yes─────┐                           │
+                   │                                          │                           │
+                   │                                          │                           │
+                   │                                          │                           │
+                   │                                          │                           │
+                   ▼                                          ▼                           │
+ ┌──────────────────────────────────┐     ┌──────────────────────────────────────┐        │
+ │  Redirect back to login portal   │     │                                      │        │
+ │       & show error message       │     │     Generate `nf_jwt` cookie and     │        │
+ │                                  │     │   set cookie in function response    │        │
+ │        "Session timeout"         │     │                                      │        │
+ └──────────────────────────────────┘     └──────────────────────────────────────┘        │
+                                                              │                           │
+                                                              │                           │
+                                                              │                           │
+                                                              ▼                           │
+                                         ┌─────────────────────────────────────────┐      │
+                                         │     Then redirect back to original      │      │
+                                         │  referrer to set cookie on gated site   │      │
+                                         │                                         │      │
+                                         │   gated-site.com/set-cookie Function    │      │
+                                         └─────────────────────────────────────────┘      │
+                                                              │                           │
+                                                              ▼                           │
+                                            ┌───────────────────────────────────┐         │
+                                            │                                   │         │
+                                            │  Set nf_jwt cookie on gated.com   │         │
+                                            │                                   │         │
+                                            └───────────────────────────────────┘         │
+                                                              │                           │
+                                                              │                           │
+                                                              └─────────────┐             │
+                                                                            │             │
+                                                                            ▼             │
+                                                                ┌──────────────────────┐  │
+                                                                │                      │  │
+                                                                │ Redirect to original │  │
+                                                                │    URL requested     │──┘
+                                                                │                      │   
+                                                                └──────────────────────┘   
+```
 
 ## Setting up Okta
 
