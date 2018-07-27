@@ -1,35 +1,38 @@
 # Login Site
 
-This [site](https://gated-sites-demo-login-site.netlify.com/) gates multiple netlify sites via one login portal. AKA Single Sign On
+This [site](https://site-gated-by-okta-1.netlify.com/) gates multiple Netlify sites via one login portal.
+
+A.k.a. Single Sign On
 
 > `TLDR;` You can use netlify functions + any identity provider (Auth0, Okta, Netlify identity etc) to gate as  many Netlify sites as they want!
 
-The protected sites can only be access *after* logging in through the [Login Portal site]((https://gated-sites-demo-login-site.netlify.com/)).
+The protected sites can only be access *after* logging in through the [Login Portal site](https://site-gated-by-okta-1.netlify.com/).
 
 ## Login Portal
 
-https://gated-sites-demo-login-site.netlify.com/
+https://site-gated-by-okta-1.netlify.com/
 
 ## Gated Sites
 
 These are the sites that are protected
 
-- [Site 1](https://gated-sites-demo-site1.netlify.com)
-- [Site 2](https://gated-sites-demo-site2.netlify.com)
+- [Gated Site 1](https://site-gated-by-okta-1.netlify.com/)
+- [Gated Site 2](https://site-gated-by-okta-2.netlify.com/)
 
 ## How does it work?
 
-We are using a combination of Netlify functions and Netlify `_redirects`.
+We are using a combination of [Netlify functions](https://www.netlify.com/docs/functions/), [Access Control](https://www.netlify.com/docs/visitor-access-control/#role-based-access-controls-with-jwt-tokens) and [role based `_redirects`](https://www.netlify.com/docs/redirects/#role-based-redirect-rules)
 
 
 ## Setting up Okta
 
-// https://stackoverflow.com/questions/46333510/okta-sign-in-widget-mfa
+1. Setup the okta widget
 
-// Then create API token https://dev-652264-admin.oktapreview.com/admin/access/api/tokens
+  (optional) setting up 2 factor auth https://stackoverflow.com/questions/46333510/okta-sign-in-widget-mfa
 
-// Then add netlify env vars
+2. Then create API token https://dev-652264-admin.oktapreview.com/admin/access/api/tokens
 
+3. Then add Netlify env vars
 
 ## Troubleshooting
 
