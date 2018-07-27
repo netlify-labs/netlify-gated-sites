@@ -24,6 +24,7 @@ const LocalStorageRedirectUrl = 'redirect_url'
 
 export default class App extends Component {
   state = {
+    loading: true,
     loggedIn: false
   }
   constructor() {
@@ -53,6 +54,9 @@ export default class App extends Component {
       console.log('res', res)
       if (res.status === 'INACTIVE') {
         console.log('User not logged in')
+        this.setState({
+          loading: false,
+        })
       }
       // Session exists, show logged in state.
       if (res.status === 'ACTIVE') {
@@ -71,7 +75,8 @@ export default class App extends Component {
           })
           .then(data => {
             this.setState({
-              loggedIn: true
+              loggedIn: true,
+              loading: false,
             })
 
             console.log('okta login response', data)
@@ -162,13 +167,14 @@ export default class App extends Component {
     })
   }
   renderContent() {
-    const { loggedIn } = this.state
+    const { loggedIn, loading } = this.state
 
+    const text = (loading) ? 'Loading...' : 'Please log in'
     // Show login widget
     if (!loggedIn) {
       return (
         <div className='app-contents'>
-          <h1>Please log in</h1>
+          <h1>{text}</h1>
           <div id="okta-login-container"></div>
         </div>
       )

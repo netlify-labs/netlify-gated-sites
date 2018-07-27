@@ -1,4 +1,4 @@
-# Login Site
+# Okta Login Site
 
 This [site](https://site-gated-by-okta-1.netlify.com/) gates multiple Netlify sites via one login portal.
 
@@ -77,7 +77,7 @@ We are using a combination of [Netlify functions](https://www.netlify.com/docs/f
                                            └─────────────────────────────────────┘                      │
                                                               │                                         │
                                                               │                                         │
-                                                      is session valid?                                 │
+                                                    is Okta session valid?                              │
                                                               │                                         │
                                                               │                                         │
                                  ┌───────────No───────────────┴─────yes─────┐                           │
@@ -90,7 +90,7 @@ We are using a combination of [Netlify functions](https://www.netlify.com/docs/f
                │  Redirect back to login portal   │     │                                      │        │
                │       & show error message       │     │     Generate `nf_jwt` cookie and     │        │
                │                                  │     │   set cookie in function response    │        │
-               │        "Session timeout"         │     │                                      │        │
+               │        "Session invalid"         │     │                                      │        │
                └──────────────────────────────────┘     └──────────────────────────────────────┘        │
                                                                             │                           │
                                                                             │                           │
@@ -126,12 +126,28 @@ We are using a combination of [Netlify functions](https://www.netlify.com/docs/f
 
 1. Setup the okta widget
 
-  (optional) setting up 2 factor auth https://stackoverflow.com/questions/46333510/okta-sign-in-widget-mfa
+    In the application, we need to include the okta widget and setup the configuration needed.
 
-2. Then create API token https://dev-652264-admin.oktapreview.com/admin/access/api/tokens
+    Follow the [okta widget instructions](https://developer.okta.com/code/javascript/okta_sign-in_widget)
 
-3. Then add Netlify env vars
+    (Optional) setting up 2 factor authentication https://stackoverflow.com/questions/46333510/okta-sign-in-widget-mfa
+
+2. Create an Okta API token
+
+    To verify the okta session is valid, we need to make an API call to okta with the data returned from a successful widget login.
+
+    `https://dev-YOUR_OKTA_ID-admin.oktapreview.com/admin/access/api/tokens`
+
+    Once we have the okta token, we need to set that in the netlify ENV variables
+
+3. Add Netlify env vars to your site
+
+    `OKTA_API_TOKEN` - your token from previous step
+
+    `OKTA_BASE_URL` - your Okta portal base URL. Example: `https://dev-641447.oktapreview.com`
+
+    `JWT_SECRET` - The secret used to sign the `nf_jwt` cookie being used for role based redirects
 
 ## Troubleshooting
 
-If you see "Unable to connect to the server. Please check your network connection." message from the Okta widget. Make sure you have the correct okta client ID and base URL set. They should look like base url `https://dev-342521.oktapreview.com` and client ID `0oafn963hdsjY6P0h7`
+If you see "Unable to connect to the server. Please check your network connection." message from the Okta widget. Make sure you have the correct Okta client ID and base URL set. They should look like base url `https://dev-342521.oktapreview.com` and client ID `0oafn963hdsjY6P0h7`
