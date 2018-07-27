@@ -30,6 +30,17 @@ exports.handler = (event, context, callback) => {
     .then(res => res.json())
     .then(data => {
       console.log('Okta response', data)
+
+      // MFA_REQUIRED force relogin
+      if (data.status === 'MFA_REQUIRED') {
+        return callback(null, {
+          statusCode: 500,
+          body: JSON.stringify({
+            error: 'MFA_REQUIRED'
+          })
+        })
+      }
+
       // Bail if session is not ACTIVE
       if (data.status !== 'ACTIVE') {
         return callback(null, {

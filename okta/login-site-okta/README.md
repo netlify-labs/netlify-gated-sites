@@ -132,6 +132,8 @@ We are using a combination of [Netlify functions](https://www.netlify.com/docs/f
 
     (Optional) setting up 2 factor authentication https://stackoverflow.com/questions/46333510/okta-sign-in-widget-mfa
 
+    (Optional) Self registration flow can be setup [like this](https://support.okta.com/help/Documentation/Knowledge_Article/Okta-Self-Service-Registration-361544503)
+
 2. Create an Okta API token
 
     To verify the okta session is valid, we need to make an API call to okta with the data returned from a successful widget login.

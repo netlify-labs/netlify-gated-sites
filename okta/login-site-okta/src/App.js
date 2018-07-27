@@ -84,6 +84,17 @@ export default class App extends Component {
             })
 
             console.log('okta login response', data)
+            if (data.error === 'MFA_REQUIRED') {
+              // first login, force re-login
+              oktaSignIn.session.close((err) => {
+                if (err) {
+                  console.log(err)
+                }
+                alert('Relogin please')
+                window.location.href = window.location.origin
+              })
+              return false
+            }
 
             const redirectUrl = localStorage.getItem(LocalStorageRedirectUrl)
             const hashData = parseUrlHash()
