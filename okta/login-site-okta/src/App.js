@@ -147,7 +147,7 @@ export default class App extends Component {
           </div>
           <div className='site-contents'>
             <div className='site-cookies'>
-              <button onClick={() => { window.location.href = `${site.url}/cookies/` }}>
+              <button onClick={() => { window.location.href = `${site.url}/debug-cookies/` }}>
                 View {site.title} cookies
               </button>
             </div>
