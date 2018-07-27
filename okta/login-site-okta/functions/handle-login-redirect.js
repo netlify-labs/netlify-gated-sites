@@ -9,10 +9,11 @@ exports.handler = (event, context, callback) => {
   const redirectBaseUrl = urlData.origin
   const redirectUrl = urlData.href
   const { headers } = event
-  // No auth cookie found. Return to login site
 
+  // No auth cookie found. Return to login site
   const cookieHeader = headers.cookie || ''
   const cookies = cookie.parse(cookieHeader)
+
   // If no cookie, send back to login portal
   if (!headers.cookie || !cookies.nf_jwt) {
     const returnToLogin = (redirectUrl) ? `${siteUrl}?site=${redirectUrl}` : siteUrl
