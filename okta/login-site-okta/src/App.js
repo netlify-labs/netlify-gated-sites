@@ -6,8 +6,8 @@ import './App.css'
 
 window.netlifyIdentity = netlifyIdentity
 
-var baseURL = 'https://dev-652264.oktapreview.com'
-var clientId = '0oafn99h3qdL5jY6P0h7'
+var baseURL = 'https://dev-641447.oktapreview.com'
+var clientId = '0oafted8qq8atokyf0h7'
 
 const REDIRECT_URL = 'redirect_url'
 const sites = [
