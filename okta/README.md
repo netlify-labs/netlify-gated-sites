@@ -1,4 +1,4 @@
-# Okta Single Site Sign on w/ Netlify Access Control & Serverless Functions
+# Okta + Netlify Single Sign on
 
 [Here is a diagram on how it works](https://github.com/DavidWells/netlify-gated-sites/tree/master/okta/login-site-okta#how-does-it-work)
 
