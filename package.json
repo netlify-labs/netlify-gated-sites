@@ -6,6 +6,6 @@
     "doInstall": "node ./cache.js"
   },
   "dependencies": {
-    "cache-me-outside": "0.0.4"
+    "cache-me-outside": "0.0.5"
   }
 }
