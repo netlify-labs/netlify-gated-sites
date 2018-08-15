@@ -10,7 +10,7 @@ console.log('OS dir', osDir)
 // Netlify cache folder
 const yourCustomNameSpace = 'fast-cache'
 const cacheFolder = path.join('/opt/build/cache', yourCustomNameSpace)
-//const cacheFolder = path.resolve('./cache')
+// const cacheFolder = path.resolve('./cache')
 console.log('cacheFolder', cacheFolder)
 
 console.log('Whats in my cache before?')
@@ -46,7 +46,7 @@ const contentsToCache = [
 cacheMagic(cacheFolder, contentsToCache).then((cacheInfo) => {
   console.log('Success! You are ready to rock')
   cacheInfo.forEach((info) => {
-    console.log(info.cacheDir)
+    console.log('info.cacheDir', info.cacheDir)
   })
   // getSize(cacheFolder, (err, size) => {
   //   if (err) {
