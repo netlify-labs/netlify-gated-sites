@@ -85,7 +85,7 @@ export default class App extends Component {
 
             console.log('okta login response', data)
             if (data.error === 'MFA_REQUIRED') {
-              // first login, force re-login
+              // first login, force re-logi
               oktaSignIn.session.close((err) => {
                 if (err) {
                   console.log(err)
