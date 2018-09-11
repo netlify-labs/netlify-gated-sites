@@ -60,8 +60,9 @@ exports.handler = (event, context, callback) => {
     },
     user_metadata: decodedToken.payload.user_metadata
   }
-
-  const yourSuperSecret = 'secret'
+  
+  // Secret from in build environment settings
+  const yourSuperSecret = process.env.JWT_SECRET
   const newToken = jwt.sign(newTokenData, yourSuperSecret)
 
   /* Return this instead of redirect for debugging
